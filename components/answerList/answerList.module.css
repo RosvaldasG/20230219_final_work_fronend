@@ -1,0 +1,17 @@
+.answerMain {
+  box-sizing: border-box;
+  margin: 5px;
+  border: solid 1px black;
+  display: flex;
+  align-items: center;
+  justify-items: left;
+  /* align-self: flex-end; */
+  /* width: 100%; */
+}
+
+.textBox {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  /* text-align: center; */
+}

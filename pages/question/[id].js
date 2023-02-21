@@ -7,6 +7,7 @@ import Button from "@/components/button/Button";
 import Input from "@/components/input/Input";
 import { useState } from "react";
 import Router from "next/router";
+import AnswerList from "@/components/answerList/AnswerList";
 
 const Id = ({ answers, question, id }) => {
   const [answerText, setAnswerText] = useState();
@@ -17,7 +18,7 @@ const Id = ({ answers, question, id }) => {
   const onClickHandler = async () => {
     const answerData = {
       answerText: answerText,
-      userId: question.userId,
+      // userId: question.userId,
       questionId: id,
     };
 
@@ -41,16 +42,7 @@ const Id = ({ answers, question, id }) => {
       </div>
       <div className={styles.answersMain}>
         {answers.map((answer) => {
-          return (
-            <div className={styles.answerMain}>
-              <div>{answer.answerText}</div>
-
-              <div>{answer.timeStamp}</div>
-              <Button />
-              <p>like</p>
-              <p>dislike</p>
-            </div>
-          );
+          return <AnswerList answer={answer} />;
         })}
       </div>
       <div>

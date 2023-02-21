@@ -11,7 +11,7 @@ const Maping = ({ trip }) => {
     axios
       .get(`http://localhost:3002/question/${trip.id}/answers`)
       .then((data) => {
-        console.log(data.data.countAnswers);
+        // console.log(data.data.countAnswers);
         setAnswersQty(data.data?.countAnswers);
       });
   }, []);
@@ -33,7 +33,7 @@ const Maping = ({ trip }) => {
         window.location.reload();
       });
   };
-
+  console.log("-------", trip.answerId);
   return (
     <div className={styles.main}>
       <div className={styles.answersNoBox}>
