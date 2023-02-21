@@ -1,0 +1,58 @@
+.main {
+  box-sizing: border-box;
+  /* border: 0.5px solid black; */
+  border-radius: 10px;
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  max-height: 150px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.main:hover {
+  /* scale(1.1); */
+  transform: scale(1.01);
+  transition: 0.5s;
+}
+
+.answersNoBox {
+  margin: 15px;
+  display: flex;
+  justify-content: center;
+
+  align-items: center;
+  flex-direction: column;
+  width: 8%;
+  max-height: 150px;
+  border: 1px solid black;
+  border-radius: 15px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.answersNoBox p {
+  margin: 0;
+}
+
+.textBox {
+  width: 80%;
+}
+
+.textBox h2 {
+  cursor: pointer;
+}
+
+.textBox h2:hover {
+  color: blue;
+}
+
+.button {
+  display: flex;
+  width: auto;
+  align-items: center;
+  padding: 10px;
+}

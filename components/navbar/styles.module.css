@@ -1,0 +1,21 @@
+.main {
+  height: 100px;
+  background-color: rgb(218, 205, 195);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  color: rgb(197, 192, 192);
+}
+
+.links {
+  all: unset;
+  cursor: pointer;
+  position: relative;
+  bottom: -30px;
+}
