@@ -5,8 +5,39 @@ import Button from "@/components/button/Button";
 import axios from "axios";
 import Router from "next/router";
 import Maping from "@/components/mapping/Maping";
+import Input from "@/components/input/Input";
+import Find from "@/components/find/Find";
+import { useState, useEffect } from "react";
 
-export default function Home({ questions }) {
+export default function Home(props) {
+  const [questions, setQuestions] = useState(props.questions);
+  const [allQuestions, setAllQuestions] = useState(props.questions);
+  const [filter, setFilter] = useState("");
+  const [buttonValue, setButtonValue] = useState(false);
+
+  const onChangeFilterInputHander = (eventValue) => {
+    setFilter(eventValue);
+  };
+
+  console.log(buttonValue);
+
+  const zeroAnswers = (data) => {
+    return data.filter((data) => data.answerId.length === 0);
+  };
+
+  useEffect(() => {
+    buttonValue
+      ? setQuestions(zeroAnswers(allQuestions))
+      : setQuestions(allQuestions);
+  }, [buttonValue]);
+
+  const notAnswBut = () => {
+    buttonValue ? setButtonValue(false) : setButtonValue(true);
+    // console.log(setButtonValue);
+  };
+
+  const more = "1";
+
   return (
     <>
       <Head>
@@ -24,11 +55,35 @@ export default function Home({ questions }) {
           />
         </div>
 
-        <div className={styles.infoBox}>
-          {questions.map((question) => {
-            return <Maping trip={question} />;
-          })}
+        <div>
+          <input
+            placeholder="Find Title"
+            value={filter}
+            onChange={(text) => onChangeFilterInputHander(text.target.value)}
+          />
+          <div>
+            <h3>
+              Show
+              <span>
+                <Button
+                  text={buttonValue ? "All" : "Not Answered"}
+                  onClick={notAnswBut}
+                />
+              </span>
+              Questions
+            </h3>
+          </div>
         </div>
+
+        <div className={styles.infoBox}>
+          {questions
+            .filter((question) => question.title.includes(filter))
+            .map((question) => {
+              return <Maping trip={question} />;
+            })}
+        </div>
+
+        <div>{}</div>
       </main>
     </>
   );
@@ -37,8 +92,8 @@ export default function Home({ questions }) {
 export async function getServerSideProps(contex) {
   // console.log("contex", contex);
 
-  const response = await axios.get("http://localhost:3002/questions");
-  // console.log(response.data.questions);
+  const response = await axios.get("http://localhost:3002/questionsWithUsers");
+  console.log(response.data.questions);
   return {
     props: {
       questions: response.data.questions,
