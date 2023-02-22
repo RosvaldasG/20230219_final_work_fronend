@@ -5,6 +5,7 @@ import styles from "@/styles/Home.module.css";
 import { useState } from "react";
 import Router from "next/router";
 import axios from "axios";
+import Navbar from "@/components/navbar/Navbar";
 
 const login = () => {
   const [email, setEmail] = useState();
@@ -34,8 +35,8 @@ const login = () => {
   };
   return (
     <>
-      <h1>LOGIN</h1>
       <div className={styles.inputWraper}>
+        <Navbar text={"Gal kas atsakys ..."} />
         <Input
           type="email"
           onChange={setEmail}

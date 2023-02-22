@@ -5,8 +5,7 @@ import Button from "@/components/button/Button";
 import axios from "axios";
 import Router from "next/router";
 import Maping from "@/components/mapping/Maping";
-import Input from "@/components/input/Input";
-import Find from "@/components/find/Find";
+import SortButton from "@/components/sortbutton/SortButton";
 import { useState, useEffect } from "react";
 
 export default function Home(props) {
@@ -19,8 +18,6 @@ export default function Home(props) {
     setFilter(eventValue);
   };
 
-  console.log(buttonValue);
-
   const zeroAnswers = (data) => {
     return data.filter((data) => data.answerId.length === 0);
   };
@@ -31,12 +28,24 @@ export default function Home(props) {
       : setQuestions(allQuestions);
   }, [buttonValue]);
 
-  const notAnswBut = () => {
+  const sortButton = () => {
     buttonValue ? setButtonValue(false) : setButtonValue(true);
-    // console.log(setButtonValue);
   };
 
-  const more = "1";
+  const isLoged = () => {
+    axios
+      .get("http://localhost:3002/checkLoginStatus", {
+        headers: { user_jwt: localStorage.getItem("user_jwt") },
+      })
+      .then((res) => {
+        // console.log(res.data.status);
+        Router.push("/askQuestion/");
+      })
+      .catch((err) => {
+        // console.log(err.response.data.status);
+        alert(err.response.data.status);
+      });
+  };
 
   return (
     <>
@@ -47,31 +56,22 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <Navbar text={"MAKALAS"} />
+        <Navbar text={"Gal kas atsakys ..."} />
         <div className={styles.buttonWraper}>
-          <Button
-            text={"Ask Question"}
-            onClick={() => Router.push("/askQuestion/")}
-          />
+          <Button text={"Ask Question"} onClick={isLoged} />
         </div>
 
-        <div>
+        <div className={styles.sortFindWraper}>
           <input
-            placeholder="Find Title"
+            placeholder="Find Question By Title"
             value={filter}
             onChange={(text) => onChangeFilterInputHander(text.target.value)}
           />
           <div>
-            <h3>
-              Show
-              <span>
-                <Button
-                  text={buttonValue ? "All" : "Not Answered"}
-                  onClick={notAnswBut}
-                />
-              </span>
-              Questions
-            </h3>
+            <SortButton
+              text={buttonValue ? "All" : "Not Answered"}
+              onClick={sortButton}
+            />
           </div>
         </div>
 
@@ -82,8 +82,6 @@ export default function Home(props) {
               return <Maping trip={question} />;
             })}
         </div>
-
-        <div>{}</div>
       </main>
     </>
   );

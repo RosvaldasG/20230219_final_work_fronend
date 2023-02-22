@@ -1,0 +1,18 @@
+.sortFindWraper {
+  margin: auto;
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sortFindWraper input {
+  width: 60%;
+}
+
+.buttonWraper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0;
+}

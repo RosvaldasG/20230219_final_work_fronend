@@ -5,6 +5,7 @@ import styles from "@/styles/Home.module.css";
 import { useState } from "react";
 import Router from "next/router";
 import axios from "axios";
+import Navbar from "@/components/navbar/Navbar";
 
 const register = () => {
   const [name, setName] = useState();
@@ -36,7 +37,7 @@ const register = () => {
   };
   return (
     <>
-      <h1>REGISTER</h1>
+      <Navbar text={"Gal kas atsakys ..."} />
       <div className={styles.inputWraper}>
         <Input type="text" onChange={setName} value={name} placeholder="Name" />
         <Input

@@ -39,7 +39,7 @@ const insertTrip = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar text={"Gal kas atsakys ..."} />
       <Link href="/">Back</Link>
 
       <div className={styles.inputWraper}>

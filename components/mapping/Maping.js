@@ -12,15 +12,20 @@ const Maping = ({ trip }) => {
   };
 
   const buttonAction = async () => {
-    console.log(localStorage.getItem("user_jwt"));
+    // console.log(localStorage.getItem("user_jwt"));
 
     await axios
       .delete(`http://localhost:3002/question/${trip.id}`, {
         headers: { user_jwt: localStorage.getItem("user_jwt") },
       })
       .then((data) => {
-        Router.push("/");
-        // window.location.reload();
+        console.log("hit");
+        // Router.push("/");
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err.response.statusText);
+        alert(err.response.statusText);
       });
   };
   // console.log("-------", trip.answerId);

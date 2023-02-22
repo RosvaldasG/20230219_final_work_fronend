@@ -21,7 +21,7 @@ const Id = ({ answers, question, id }) => {
       // userId: question.userId,
       questionId: id,
     };
-
+    console.log(id);
     await axios
       .post(`http://localhost:3002/question/${id}/answers`, answerData, {
         headers: { user_jwt: localStorage.getItem("user_jwt") },
@@ -29,12 +29,15 @@ const Id = ({ answers, question, id }) => {
       .then((data) => {
         console.log(data);
         Router.push(`/question/${id}/`);
+      })
+      .catch((err) => {
+        console.log(err.response.statusText);
+        alert(err.response.statusText);
       });
   };
-
   return (
     <div>
-      <Navbar />
+      <Navbar text={"Gal kas atsakys ..."} />
       <Link href="/">Back</Link>
       <div>
         <h1>{question.title}</h1>

@@ -11,6 +11,10 @@ const AnswerList = ({ answer }) => {
       .then((data) => {
         // Router.push("/");
         window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err.response.statusText);
+        alert(err.response.statusText);
       });
   };
 
@@ -24,6 +28,10 @@ const AnswerList = ({ answer }) => {
       .then((data) => {
         // Router.push("/");
         window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err.response.statusText);
+        alert(err.response.statusText);
       });
   };
 
