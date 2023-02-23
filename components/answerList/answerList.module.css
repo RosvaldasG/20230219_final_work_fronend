@@ -1,12 +1,14 @@
 .answerMain {
   box-sizing: border-box;
-  margin: 5px;
-  border: solid 1px black;
+
+  /* border: solid 1px black; */
   display: flex;
   align-items: center;
-  justify-items: left;
+  justify-content: space-between;
+
   /* align-self: flex-end; */
   /* width: 100%; */
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
 }
 
 .textBox {
@@ -14,4 +16,30 @@
   display: flex;
   flex-direction: column;
   /* text-align: center; */
+  width: auto;
+  margin: 6px 0;
+  width: 100%;
+  padding-left: 25px;
+  padding-right: 6px;
+  text-align: right;
+}
+
+.likeWrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 110px;
+  margin: 6px 0;
+}
+
+.likeWrapper h1 {
+  margin: 0;
+}
+
+.buttonWraper {
+  display: flex;
+  align-items: center;
+  width: auto;
+  justify-content: center;
+  margin-right: 5px;
 }

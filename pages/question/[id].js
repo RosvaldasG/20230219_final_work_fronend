@@ -48,7 +48,7 @@ const Id = ({ answers, question, id }) => {
         </div>
         <div>
           <TextInput
-            type="text"
+            type="textarea"
             value={answerText}
             placeholder="Question description"
             onChange={setAnswerText}
