@@ -6,6 +6,7 @@ import { useState } from "react";
 import Router from "next/router";
 import axios from "axios";
 import Navbar from "@/components/navbar/Navbar";
+import BackButton from "@/components/backButton/BackButton";
 
 const register = () => {
   const [name, setName] = useState();
@@ -28,16 +29,17 @@ const register = () => {
         localStorage.setItem("user_jwt", res.data.jwt_token);
         document.cookie = `jwt_token= ${res.data.jwt_token}`;
         alert(res.data.response);
+
         Router.push("/");
       })
       .catch((err) => {
-        console.log(err.response.data.response);
-        alert(err.response.data.response);
+        alert("Klaida");
       });
   };
   return (
-    <>
+    <div>
       <Navbar text={"Gal kas atsakys ..."} />
+
       <div className={styles.inputWraper}>
         <Input type="text" onChange={setName} value={name} placeholder="Name" />
         <Input
@@ -58,9 +60,14 @@ const register = () => {
       </div>
 
       <div>
-        <Link href="/">Back</Link>
+        <BackButton
+          text={"BACK"}
+          onClick={() => {
+            Router.push("/");
+          }}
+        />
       </div>
-    </>
+    </div>
   );
 };
 

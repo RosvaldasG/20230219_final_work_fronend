@@ -1,13 +1,12 @@
 import React from "react";
 import styles from "./sortbutton.module.css";
+import BackButton from "../backButton/BackButton";
 
 const SortButton = ({ text, onClick }) => {
   return (
     <div className={styles.text}>
       Show
-      <button onClick={onClick} className={styles.main}>
-        {text}
-      </button>
+      <BackButton onClick={onClick} text={text} />
       Questions
     </div>
   );

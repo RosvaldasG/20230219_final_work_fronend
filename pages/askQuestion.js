@@ -6,6 +6,8 @@ import Button from "@/components/button/Button";
 import axios from "axios";
 import Router from "next/router";
 import styles from "../styles/Home.module.css";
+import BackButton from "@/components/backButton/BackButton";
+import TextInput from "@/components/textInput/TextInput";
 
 const insertTrip = () => {
   const [title, setTitle] = useState();
@@ -25,22 +27,16 @@ const insertTrip = () => {
         headers: { user_jwt: localStorage.getItem("user_jwt") },
       })
       .then((res) => {
-        // console.log(res.data.jwt_token);
-        console.log(res.data);
-        // localStorage.setItem("user_jwt", res.data.jwt_token);
-        // document.cookie = `jwt_token= ${res.data.jwt_token}`;
-        // alert(res.data.response);
         Router.push("/");
       })
       .catch((err) => {
-        alert(err.response.data);
+        alert("Error");
       });
   };
 
   return (
     <div>
       <Navbar text={"Gal kas atsakys ..."} />
-      <Link href="/">Back</Link>
 
       <div className={styles.inputWraper}>
         <Input
@@ -50,16 +46,24 @@ const insertTrip = () => {
           onChange={setTitle}
         />
 
-        <Input
+        <TextInput
           type="text"
           value={questionText}
           placeholder="Question description"
           onChange={setQuestionText}
         />
 
-        <div className={styles.buttonWraperInput}>
+        <div className={styles.buttonWrapper}>
           <Button onClick={onClickHandler} text="Create" />
         </div>
+      </div>
+      <div>
+        <BackButton
+          text={"BACK"}
+          onClick={() => {
+            Router.push("/");
+          }}
+        />
       </div>
     </div>
   );

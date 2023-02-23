@@ -4,6 +4,7 @@ import axios from "axios";
 
 const AnswerList = ({ answer }) => {
   const buttonAction = async () => {
+    console.log(localStorage.getItem("user_jwt"));
     await axios
       .delete(`http://localhost:3002/answers/${answer.answerId}`, {
         headers: { user_jwt: localStorage.getItem("user_jwt") },
@@ -19,11 +20,12 @@ const AnswerList = ({ answer }) => {
   };
 
   const actionLikes = async (data) => {
-    const likes = data;
+    console.log(data);
+    console.log(localStorage.getItem("user_jwt"));
     await axios
       .post(`http://localhost:3002/answersLikes/${answer.answerId}`, {
         headers: { user_jwt: localStorage.getItem("user_jwt") },
-        likes: likes,
+        likes: data,
       })
       .then((data) => {
         // Router.push("/");

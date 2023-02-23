@@ -10,9 +10,22 @@
   width: 60%;
 }
 
-.buttonWraper {
+.buttonWrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 40px 0;
+}
+
+.inputWraper {
+  width: 60%;
+  margin: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.textArea {
+  height: 300px;
 }

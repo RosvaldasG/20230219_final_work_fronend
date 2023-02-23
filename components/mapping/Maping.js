@@ -31,15 +31,18 @@ const Maping = ({ trip }) => {
   // console.log("-------", trip.answerId);
   return (
     <div className={styles.main}>
-      <div className={styles.answersNoBox}>
-        <div>{trip.answerId.length}</div>
+      <div className={styles.box}>
+        <div className={styles.answersNoBox}>
+          <div>{trip.answerId.length}</div>
 
-        <p>answers</p>
+          <div>answers</div>
+        </div>
+        <div>{trip.userId[0].name}</div>
       </div>
+
       <div className={styles.textBox}>
         <h2 onClick={onClickHandler}>{trip.title}</h2>
         <p>{trip.questionText}</p>
-        <p>{trip.userId[0].name}</p>
       </div>
       <div className={styles.button}>
         <Button text={"DELETE"} onClick={buttonAction} />

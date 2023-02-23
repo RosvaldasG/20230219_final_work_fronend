@@ -1,0 +1,21 @@
+.main {
+  all: unset;
+  margin: 0 10px;
+  width: 100px;
+  height: 30px;
+  /* background-color: #97e4a8; */
+  text-align: center;
+  font-weight: 600;
+  font-size: 15px;
+  color: rgb(164, 160, 160);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.main:hover {
+  background-color: #f0f5f1;
+}

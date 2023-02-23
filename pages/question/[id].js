@@ -1,19 +1,16 @@
 import React from "react";
 import axios from "axios";
-import Link from "next/link";
 import Navbar from "@/components/navbar/Navbar";
 import styles from "../question/question.module.css";
 import Button from "@/components/button/Button";
-import Input from "@/components/input/Input";
 import { useState } from "react";
 import Router from "next/router";
 import AnswerList from "@/components/answerList/AnswerList";
+import TextInput from "@/components/textInput/TextInput";
+import BackButton from "@/components/backButton/BackButton";
 
 const Id = ({ answers, question, id }) => {
   const [answerText, setAnswerText] = useState();
-
-  // const userIdFromToken = localStorage.getItem("user_jwt");
-  // console.log(userIdFromToken);
 
   const onClickHandler = async () => {
     const answerData = {
@@ -38,26 +35,36 @@ const Id = ({ answers, question, id }) => {
   return (
     <div>
       <Navbar text={"Gal kas atsakys ..."} />
-      <Link href="/">Back</Link>
-      <div>
-        <h1>{question.title}</h1>
-        <p>{question.questionText}</p>
+
+      <div className={styles.main}>
+        <div>
+          <h1>{question.title}</h1>
+          <p>{question.questionText}</p>
+        </div>
+        <div className={styles.answers}>
+          {answers.map((answer) => {
+            return <AnswerList answer={answer} />;
+          })}
+        </div>
+        <div>
+          <TextInput
+            type="text"
+            value={answerText}
+            placeholder="Question description"
+            onChange={setAnswerText}
+          />
+        </div>
+        <div className={styles.buttonWrapper}>
+          <Button onClick={onClickHandler} text={"Answer"} />
+        </div>
       </div>
-      <div className={styles.answersMain}>
-        {answers.map((answer) => {
-          return <AnswerList answer={answer} />;
-        })}
-      </div>
       <div>
-        <Input
-          type="text"
-          value={answerText}
-          placeholder="Question description"
-          onChange={setAnswerText}
+        <BackButton
+          text={"BACK"}
+          onClick={() => {
+            Router.push("/");
+          }}
         />
-      </div>
-      <div>
-        <Button onClick={onClickHandler} text={"Answer"} />
       </div>
     </div>
   );

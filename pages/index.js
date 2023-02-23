@@ -57,7 +57,7 @@ export default function Home(props) {
       </Head>
       <main className={styles.main}>
         <Navbar text={"Gal kas atsakys ..."} />
-        <div className={styles.buttonWraper}>
+        <div className={styles.buttonWrapper}>
           <Button text={"Ask Question"} onClick={isLoged} />
         </div>
 
