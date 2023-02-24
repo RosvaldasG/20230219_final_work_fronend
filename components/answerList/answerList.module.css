@@ -38,8 +38,16 @@
 
 .buttonWraper {
   display: flex;
+  flex-direction: column;
   align-items: center;
   width: auto;
   justify-content: center;
   margin-right: 5px;
+  text-align: center;
+  height: auto;
+  max-height: 150px;
+  justify-content: space-between;
+}
+
+.buttonWraperTextBox div {
 }

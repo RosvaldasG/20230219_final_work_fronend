@@ -4,6 +4,7 @@ import axios from "axios";
 import BackButton from "../backButton/BackButton";
 
 const AnswerList = ({ answer }) => {
+  console.log(answer);
   const buttonAction = async () => {
     console.log(localStorage.getItem("user_jwt"));
     await axios
@@ -52,6 +53,11 @@ const AnswerList = ({ answer }) => {
 
       <div className={styles.buttonWraper}>
         <Button onClick={buttonAction} text={"Delete"} />
+        <div>
+          <div className={styles.buttonWraperTextBox}>posted by</div>
+          <div>{answer.userId[0].name}</div>
+          <div>{answer.timeStamp}</div>
+        </div>
       </div>
     </div>
   );
