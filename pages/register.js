@@ -24,8 +24,9 @@ const register = () => {
     axios
       .post("http://localhost:3002/register", signupData)
       .then((res) => {
-        console.log(res.data.jwt_token);
-        console.log(res.data);
+        // console.log(res.data.jwt_token);
+        // console.log(res.data);
+        localStorage.setItem("name", res.data.result.name);
         localStorage.setItem("user_jwt", res.data.jwt_token);
         document.cookie = `jwt_token= ${res.data.jwt_token}`;
         alert(res.data.response);

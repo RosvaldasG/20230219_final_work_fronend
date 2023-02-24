@@ -1,4 +1,4 @@
-import Link from "next/link";
+import React from "react";
 import Input from "@/components/input/Input";
 import Button from "@/components/button/Button";
 import styles from "@/styles/Home.module.css";
@@ -11,6 +11,7 @@ import BackButton from "@/components/backButton/BackButton";
 const login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [userName, setUserName] = useState("");
 
   const onClickHandler = () => {
     const signupData = {
@@ -23,7 +24,7 @@ const login = () => {
       .post("http://localhost:3002/login", signupData)
       .then((res) => {
         // console.log(res.data.jwt_token);
-        console.log(res.data);
+        localStorage.setItem("name", res.data.user.name);
         localStorage.setItem("user_jwt", res.data.jwt_token);
         document.cookie = `jwt_token= ${res.data.jwt_token}`;
         alert(res.data.status);

@@ -1,9 +1,6 @@
 .main {
   /* height: 100px; */
   background-color: rgb(218, 205, 195);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .title {

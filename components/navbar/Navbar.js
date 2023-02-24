@@ -4,10 +4,6 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 
 const Navbar = ({ text }) => {
-  // const tttt = () => {
-  //   console.log("Hit");
-  //   window.open("/register/", "", "width=300,height=300");
-  // };
   return (
     <div className={styles.main}>
       <div className={styles.conatiner}>
